@@ -1,0 +1,18 @@
+.wrapper {
+    width: 100%;
+    height: 60px;
+    padding: 9px 16px;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+// Menu
+.content {
+    width: 230px;
+}
