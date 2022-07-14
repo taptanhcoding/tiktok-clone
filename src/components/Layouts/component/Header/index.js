@@ -3,9 +3,11 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
+    faEllipsisVertical,
     faPlus,
     faSearch,
     faSpinner,
+    faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
@@ -14,17 +16,18 @@ import styles from './Header.module.scss';
 import images from '~/accets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import MenuItems from '~/components/Popper/MenuItems';
 import { faCalendarPlus } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     const [visible, setVisible] = useState(false);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 3000);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSearchResult([1, 2, 3]);
+    //     }, 3000);
+    // }, []);
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -67,17 +70,17 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
-                    <Button
-                        medium
-                        primary
-                        rounded
-                        leftIcon={<FontAwesomeIcon icon={faPlus} />}
-                    >
+                    <Button medium leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                         <span>Tải lên</span>
                     </Button>
-                    <Button outline medium>
+                    <Button primary medium>
                         <span>Đăng nhập</span>
                     </Button>
+                    <MenuItems>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </MenuItems>
                 </div>
             </div>
         </header>
