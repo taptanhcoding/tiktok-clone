@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faCircleQuestion,
     faCircleXmark,
+    faEarthAsia,
     faEllipsisVertical,
+    faKeyboard,
     faPlus,
     faSearch,
     faSpinner,
@@ -16,10 +19,26 @@ import styles from './Header.module.scss';
 import images from '~/accets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import MenuItems from '~/components/Popper/MenuItems';
+import Menu from '~/components/Popper/Menu';
 import { faCalendarPlus } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'Tiếng Việt',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Phím tắt trên bàn phím',
+        to: '',
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     const [visible, setVisible] = useState(false);
@@ -76,11 +95,11 @@ function Header() {
                     <Button primary medium>
                         <span>Đăng nhập</span>
                     </Button>
-                    <MenuItems>
+                    <Menu items={MENU_ITEMS}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
-                    </MenuItems>
+                    </Menu>
                 </div>
             </div>
         </header>

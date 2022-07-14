@@ -1,0 +1,14 @@
+// Menu
+.menu-items {
+    width: 232px;
+    .menu-list {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-left: 0 !important;
+        border: none !important;
+        padding: 10px 16px;
+        width: 100%;
+    }
+}
