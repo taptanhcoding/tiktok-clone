@@ -9,6 +9,7 @@
     width: var(--default-layout-content-width);
     display: flex;
     flex-direction: row;
+    padding: 0 var(--default-layout-horizontal-spacer);
 }
 
 .content {
