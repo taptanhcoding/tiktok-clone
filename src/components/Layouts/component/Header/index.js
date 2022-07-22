@@ -181,7 +181,6 @@ function Header() {
                                 src="1https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/56661eb3e71ec6f35b3a89215fba913b~c5_100x100.jpeg?x-expires=1658563200&x-signature=03YB7l5Su%2BGmJZpO0CXT0KpAYB0%3D"
                                 className={cx('user-avatar')}
                                 alt=""
-                                // fallback="https://static.fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
