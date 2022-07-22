@@ -100,11 +100,33 @@
         background: rgba(22, 24, 35, 0.06);
     }
 }
+//Actions
+.actions {
+    display: flex;
+    align-items: center;
+}
 
 .more-btn {
     font-size: 1.6rem;
     margin-left: 18px;
     background-color: transparent;
     padding: 4px 15px 4px 0;
+    cursor: pointer;
+}
+
+.actions-btn {
+    font-size: 0rem;
+    color: #161823;
+    background-color: transparent;
+    padding: 0px 12px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
     cursor: pointer;
 }
