@@ -20,6 +20,7 @@ function Button({
     large = false,
     medium = false,
     outline = false,
+    account = false,
     ...passProps
 }) {
     let Comp = 'button';
@@ -50,6 +51,7 @@ function Button({
         medium,
         disabled,
         rounded,
+        account,
     });
     return (
         <Comp className={classes} {...props} {...passProps}>

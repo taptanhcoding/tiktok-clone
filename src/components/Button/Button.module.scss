@@ -3,6 +3,7 @@
     text-align: center;
     justify-content: center;
     min-width: 100px;
+    font-family: 'ProximaNova', sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
     padding: 6px 8px;
@@ -62,6 +63,15 @@
     }
 }
 
+.account {
+    border: none;
+    height: 32px;
+    padding: 3px 3px 0;
+    min-width: 32px;
+    &:hover {
+        background-color: transparent;
+    }
+}
 // Button sizes
 .large {
     min-width: 168px;
