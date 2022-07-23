@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,25 +21,32 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [visible, setVisible] = useState(false);
     const inputSearch = useRef();
+
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3, 4]);
-        }, 3000);
-    }, []);
+        if (!!searchValue) {
+            const url = `https://tiktok.fullstack.edu.vn/api/users/search?q=${searchValue}&type=less`;
+            fetch(url)
+                .then((data) => data.json())
+                .then((res) => {
+                    setSearchResult(res.data);
+                });
+        } else {
+            setSearchResult([]);
+        }
+    }, [searchValue]);
     return (
         <HeadlessTippy
             render={(attrs) => (
                 <div className={cx('search-results')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>account</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
-            visible={visible && searchValue.length > 0 ? true : false}
+            visible={visible && searchResult.length > 0 ? true : false}
             onClickOutside={() => setVisible(false)}
             interactive={true}
         >

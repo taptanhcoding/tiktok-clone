@@ -5,23 +5,21 @@ import className from 'classnames/bind';
 import styles from '~/components/AccountItem/AccountItem.module.scss';
 
 const cx = className.bind(styles);
-function AccountItem() {
+function AccountItem({ data }) {
     return (
         <div className={cx('wrapper')}>
-            <Image
-                className={cx('avatar')}
-                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/00bcd008909adb9d0ed13db6256d357f.jpeg?x-expires=1657526400&x-signature=3EjrVtIAzVNgQFS5WBfB9imWhtA%3D"
-                alt="Hoa"
-            />
+            <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
             <div className={cx('info')}>
                 <p className={cx('tiktok-id')}>
-                    <span>ADepTrai</span>
-                    <FontAwesomeIcon
-                        className={cx('tiktok-active')}
-                        icon={faCheckCircle}
-                    />
+                    <span>{data.nickname}</span>
+                    {data.tick && (
+                        <FontAwesomeIcon
+                            className={cx('tiktok-active')}
+                            icon={faCheckCircle}
+                        />
+                    )}
                 </p>
-                <p className={cx('name')}>Nguyễn Văn A</p>
+                <p className={cx('name')}>{data.full_name}</p>
             </div>
         </div>
     );
