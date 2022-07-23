@@ -15,12 +15,13 @@ const publicRoutes = [
         component: Following,
     },
     {
-        path: '/profile',
+        path: '/@:nickname',
         component: Profile,
     },
     {
         path: '/search',
         component: Search,
+        layout: null,
     },
     {
         path: '/upload',

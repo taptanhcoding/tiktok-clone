@@ -20,19 +20,29 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [visible, setVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
     const inputSearch = useRef();
 
     useEffect(() => {
-        if (!!searchValue) {
-            const url = `https://tiktok.fullstack.edu.vn/api/users/search?q=${searchValue}&type=less`;
-            fetch(url)
-                .then((data) => data.json())
-                .then((res) => {
-                    setSearchResult(res.data);
-                });
-        } else {
+        if (!searchValue.trim()) {
             setSearchResult([]);
+            return;
         }
+
+        setLoading(true);
+
+        const url = `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+            searchValue,
+        )}&type=less`;
+        fetch(url)
+            .then((data) => data.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
     }, [searchValue]);
     return (
         <HeadlessTippy
@@ -41,7 +51,11 @@ function Search() {
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>account</h4>
                         {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
+                            <AccountItem
+                                key={result.id}
+                                data={result}
+                                onClick={() => setSearchValue('')}
+                            />
                         ))}
                     </PopperWrapper>
                 </div>
@@ -63,7 +77,7 @@ function Search() {
                     onFocus={() => setVisible(true)}
                 />
 
-                {searchValue.length > 0 && (
+                {searchValue.length > 0 && !loading && (
                     <button
                         className={cx('clear-btn')}
                         onClick={() => {
@@ -75,7 +89,10 @@ function Search() {
                     </button>
                 )}
 
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && (
+                    <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                )}
+
                 <button
                     className={cx('search-btn')}
                     onClick={() => setSearchResult((prev) => [...prev, searchValue])}
