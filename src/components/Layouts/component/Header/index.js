@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -26,6 +27,7 @@ import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/image';
 import Search from '../Search';
+import routeConfig from '~/config/route';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -97,9 +99,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routeConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="TikTok" />
-                </div>
+                </Link>
                 <Search />
 
                 <div className={cx('actions')}>
@@ -134,6 +136,7 @@ function Header() {
                                 src="1https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/56661eb3e71ec6f35b3a89215fba913b~c5_100x100.jpeg?x-expires=1658563200&x-signature=03YB7l5Su%2BGmJZpO0CXT0KpAYB0%3D"
                                 className={cx('user-avatar')}
                                 alt="nguyen van a"
+                                // onMouseDown={(e) => e.preventDefault()}
                             />
                         ) : (
                             <button className={cx('more-btn')}>

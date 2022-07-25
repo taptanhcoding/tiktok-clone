@@ -44,6 +44,10 @@ function Search() {
         fetchApi();
     }, [debounce]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
+
     return (
         <HeadlessTippy
             render={(attrs) => (
@@ -71,7 +75,7 @@ function Search() {
                     spellCheck={false}
                     value={searchValue}
                     onChange={(e) => {
-                        setSearchValue(e.target.value);
+                        setSearchValue(e.target.value.trimStart());
                         setVisible(true);
                     }}
                     onFocus={() => setVisible(true)}
@@ -93,10 +97,7 @@ function Search() {
                     <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                 )}
 
-                <button
-                    className={cx('search-btn')}
-                    onClick={() => setSearchResult((prev) => [...prev, searchValue])}
-                >
+                <button className={cx('search-btn')} onMouseDown={handleSubmit}>
                     <SearchIcon width="2.4rem" height="2.4rem" />
                 </button>
             </div>
