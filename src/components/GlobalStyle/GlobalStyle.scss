@@ -10,6 +10,7 @@
     --black: #000;
     --text-color: #333;
     --white: #fff;
+    --header-menu-height: 50px;
 }
 
 * {
@@ -27,6 +28,7 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    overflow-y: overlay;
 }
 
 ::-webkit-scrollbar {
@@ -39,7 +41,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(217, 217, 217, 0.8);
+    background: rgba(217, 217, 217, 0.65);
     border-radius: 10px;
 }
 

@@ -16,3 +16,11 @@
 .menu-popper {
     padding-bottom: 8px;
 }
+
+.wrapper::-webkit-scrollbar-track {
+    margin-top: calc(var(--header-menu-height) + 5px);
+}
+
+.wrapper::-webkit-scrollbar {
+    width: 8px;
+}
