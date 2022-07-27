@@ -25,7 +25,7 @@ function Search() {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const inputSearch = useRef();
-    const debounce = useDebounce(searchValue, 800);
+    const debounce = useDebounce(searchValue, 600);
 
     useEffect(() => {
         if (!debounce.trim()) {
