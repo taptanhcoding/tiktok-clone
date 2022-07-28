@@ -34,4 +34,4 @@ Image.propTypes = {
     alt: PropTypes.string,
 };
 
-export { default } from './Image';
+export default Image;

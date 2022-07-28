@@ -26,7 +26,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/image';
-import Search from '../Search';
+import Search from '~/layouts/component/Search/index';
 import config from '~/config/';
 
 const cx = classNames.bind(styles);
