@@ -110,19 +110,24 @@ function Header() {
                             <Button medium leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                                 <span>Tải lên</span>
                             </Button>
-                            <button className={cx('actions-btn')}>
-                                <MessageIcon />
-                            </button>
-                            <button className={cx('actions-btn')}>
-                                <MailIcon width="3.2rem" height="3.2rem" />
-                            </button>
+                            <Tippy content="Tin nhắn" placement="bottom">
+                                <button className={cx('actions-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Hộp thư" placement="bottom">
+                                <button className={cx('actions-btn')}>
+                                    <MailIcon width="3.2rem" height="3.2rem" />
+                                    <span className={cx('badge')}>12</span>
+                                </button>
+                            </Tippy>
                         </>
                     ) : (
                         <>
-                            <Button medium leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                            <Button leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                                 <span>Tải lên</span>
                             </Button>
-                            <Button primary medium>
+                            <Button primary>
                                 <span>Đăng nhập</span>
                             </Button>
                         </>

@@ -19,7 +19,6 @@ function Button({
     rounded = false,
     small = false,
     large = false,
-    medium = false,
     outline = false,
     account = false,
     ...passProps
@@ -49,7 +48,6 @@ function Button({
         outline,
         small,
         large,
-        medium,
         disabled,
         rounded,
         account,

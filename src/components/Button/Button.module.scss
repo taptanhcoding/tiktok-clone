@@ -2,7 +2,6 @@
     display: inline-flex;
     text-align: center;
     justify-content: center;
-    min-width: 100px;
     font-family: var(--font-family);
     font-size: 1.6rem;
     font-weight: 700;
@@ -12,7 +11,6 @@
     background-color: var(--white);
     border: 1px solid rgba(22, 24, 35, 0.12);
     line-height: 22px;
-    font-weight: 600px;
     user-select: none;
     + .wrapper {
         margin-left: 16px;
@@ -23,6 +21,9 @@
     &.disabled {
         cursor: not-allowed;
     }
+    font-weight: 700;
+    min-width: 100px;
+    min-height: 36px;
 }
 
 //Button distance
@@ -83,9 +84,6 @@
 }
 
 .medium {
-    font-weight: 700;
-    min-width: 100px;
-    min-height: 36px;
 }
 
 .small {

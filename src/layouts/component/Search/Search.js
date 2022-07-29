@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,23 +25,23 @@ function Search() {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const inputSearch = useRef();
-    const debounce = useDebounce(searchValue, 600);
+    const debounceValue = useDebounce(searchValue, 600);
 
     useEffect(() => {
-        if (!debounce.trim()) {
+        if (!debounceValue.trim()) {
             setSearchResult([]);
             return;
         }
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchServices.search(debounce);
+            const result = await searchServices.search(debounceValue);
             setSearchResult(result);
             setLoading(false);
         };
 
         fetchApi();
-    }, [debounce]);
+    }, [debounceValue]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
