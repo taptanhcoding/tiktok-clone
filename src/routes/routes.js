@@ -5,6 +5,7 @@ import Profile from '~/pages/Profile';
 import Search from '~/pages/Search';
 import { HeaderOnly } from '~/layouts';
 import config from '~/config/';
+import Live from '~/pages/Live';
 
 const publicRoutes = [
     {
@@ -18,6 +19,10 @@ const publicRoutes = [
     {
         path: config.routes.profile,
         component: Profile,
+    },
+    {
+        path: config.routes.live,
+        component: Live,
     },
     {
         path: config.routes.search,

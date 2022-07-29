@@ -74,7 +74,6 @@ Button.propTypes = {
     rounded: PropTypes.bool,
     small: PropTypes.bool,
     large: PropTypes.bool,
-    medium: PropTypes.bool,
     outline: PropTypes.bool,
     account: PropTypes.bool,
 };

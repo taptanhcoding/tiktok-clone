@@ -1,0 +1,41 @@
+.wrapper {
+    padding: 20px 0 26px 0px;
+}
+
+.menu-item {
+    display: flex;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    align-items: center;
+    padding: 8px;
+    padding-left: 0;
+    border-radius: 4px;
+    transition: background-color ease-in-out 200ms;
+    .active-icon,
+    .icon {
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+    .active-icon {
+        display: none;
+    }
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+    &.active {
+        color: var(--primary);
+        .icon {
+            display: none;
+        }
+        .active-icon {
+            display: block;
+        }
+    }
+}
+
+.title {
+    margin-left: 8px;
+}
