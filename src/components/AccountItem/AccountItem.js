@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import Image from '~/components/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,9 +8,15 @@ import styles from './AccountItem.module.scss';
 import { Link } from 'react-router-dom';
 
 const cx = className.bind(styles);
-function AccountItem({ data, onClick }) {
+
+const AccountItem = forwardRef(({ data, onClick, className }, ref) => {
     return (
-        <Link to={`/@${data.nickname}`} className={cx('wrapper')} onClick={onClick}>
+        <Link
+            ref={ref}
+            to={`/@${data.nickname}`}
+            className={cx('wrapper', className)}
+            onClick={onClick}
+        >
             <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
             <div className={cx('info')}>
                 <p className={cx('tiktok-id')}>
@@ -25,7 +32,7 @@ function AccountItem({ data, onClick }) {
             </div>
         </Link>
     );
-}
+});
 
 AccountItem.propTypes = {
     data: PropTypes.object.isRequired,

@@ -101,3 +101,9 @@
 .title + .icon {
     margin-left: 8px;
 }
+
+.title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

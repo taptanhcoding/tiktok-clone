@@ -16,4 +16,6 @@
 
 .content {
     flex: 1;
+    position: relative;
+    left: var(--default-sidebar-width);
 }

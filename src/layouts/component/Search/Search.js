@@ -52,8 +52,7 @@ function Search() {
             <HeadlessTippy
                 render={(attrs) => (
                     <div className={cx('search-results')} tabIndex="-1" {...attrs}>
-                        <PopperWrapper>
-                            <h4 className={cx('search-title')}>account</h4>
+                        <PopperWrapper menuTitle="Tài khoản">
                             {searchResult.map((result) => (
                                 <AccountItem
                                     key={result.id}

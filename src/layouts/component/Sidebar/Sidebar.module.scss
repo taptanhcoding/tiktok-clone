@@ -1,6 +1,147 @@
 .wrapper {
-    width: 356px;
-    display: flex;
+    // display: flex;
+    height: calc(100vh - var(--default-layout-header-height));
+    position: fixed;
+    top: var(--default-layout-header-height);
     flex-direction: column;
-    min-height: 1000px;
+    overflow-y: overlay;
+}
+
+.wrapper,
+.user-box {
+    width: var(--default-sidebar-width);
+}
+
+.user-box {
+    padding-right: 32px;
+    margin-top: -16px;
+}
+//css box HeadlessTippy
+.user-box_wrapper {
+    padding: 20px;
+}
+//Css img
+.user-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+//Css name
+.tiktok-id,
+.name {
+    font-family: SofiaPro;
+}
+
+.tiktok-id {
+    font-size: 1.6rem;
+}
+
+.name {
+    font-size: 1em;
+}
+.tiktok-active {
+    color: rgb(32, 213, 236);
+    margin-left: 4px;
+    font-size: 1.2rem;
+}
+
+//Css follow like
+.user-inter {
+    font-size: 1.7rem;
+}
+
+.wp-data + .wp-data {
+    margin-left: 12px;
+}
+
+.data {
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.sidebar-item {
+    box-shadow: none;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.user-item {
+    padding: 8px;
+}
+
+.user-more {
+    color: var(--primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 8px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+//Css discover
+.discover {
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
+    min-height: fit-content;
+    height: 24px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    // transition: background 200ms ease-in-out 0s;
+    margin-right: 8px;
+    padding: 3px 10px;
+    font-size: 1.4rem;
+}
+
+.discover + .discover {
+    margin-left: 0;
+}
+
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: unset;
+}
+
+.link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ccc;
+    display: inline-block;
+    margin-right: 6px;
+    line-height: 1.7rem;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+//Css scroll
+
+.wrapper::-webkit-scrollbar {
+    width: 0px;
+    transition: width ease-in-out 1s;
+}
+
+.wrapper:hover::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(217, 217, 217, 0.5);
+    border-radius: 10px;
 }
