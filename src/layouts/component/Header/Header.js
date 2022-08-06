@@ -105,11 +105,11 @@ function Header() {
                 <Search />
 
                 <div className={cx('actions')}>
+                    <Button medium leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                        <span>Tải lên</span>
+                    </Button>
                     {curentUser ? (
                         <>
-                            <Button medium leftIcon={<FontAwesomeIcon icon={faPlus} />}>
-                                <span>Tải lên</span>
-                            </Button>
                             <Tippy content="Tin nhắn" placement="bottom">
                                 <button className={cx('actions-btn')}>
                                     <MessageIcon />
@@ -124,9 +124,6 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button leftIcon={<FontAwesomeIcon icon={faPlus} />}>
-                                <span>Tải lên</span>
-                            </Button>
                             <Button primary>
                                 <span>Đăng nhập</span>
                             </Button>
@@ -135,6 +132,7 @@ function Header() {
                     <Menu
                         items={curentUser ? userMenu : MENU_ITEMS}
                         onChange={handleMenuChange}
+                        positionArrow="top"
                     >
                         {curentUser ? (
                             <Image

@@ -20,6 +20,13 @@
     background-color: rgba(136, 136, 136, 0.5);
     margin-right: 12px;
 }
+
+.avatar.live {
+    border: 2px solid var(--primary);
+    padding: 2px;
+    background-color: var(--white);
+}
+
 .info {
     flex: 0 1 auto;
     min-width: 0px;

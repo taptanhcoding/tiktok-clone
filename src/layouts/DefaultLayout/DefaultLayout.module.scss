@@ -17,5 +17,9 @@
 .content {
     flex: 1;
     position: relative;
-    left: var(--default-sidebar-width);
+    padding-left: var(--default-sidebar-width);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }

@@ -43,3 +43,29 @@
 .header + .menu-children {
     margin-top: calc(var(--header-menu-height) - 10px);
 }
+
+//Css arrow
+.arrow,
+.arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+}
+
+.arrow.top::before {
+    top: -11px;
+}
+.arrow.bottom::before {
+    bottom: 0px;
+}
+
+.arrow {
+    visibility: hidden;
+}
+
+.arrow::before {
+    visibility: visible;
+    content: '';
+    transform: rotate(45deg);
+}

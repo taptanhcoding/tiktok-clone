@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 
 const cx = className.bind(styles);
 
-const AccountItem = forwardRef(({ data, onClick, className }, ref) => {
+const AccountItem = forwardRef(({ data, onClick, className, isLive = false }, ref) => {
+    const liveClass = isLive ? 'live' : '';
     return (
         <Link
             ref={ref}
@@ -17,7 +18,11 @@ const AccountItem = forwardRef(({ data, onClick, className }, ref) => {
             className={cx('wrapper', className)}
             onClick={onClick}
         >
-            <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
+            <Image
+                className={cx('avatar', liveClass)}
+                src={data.avatar}
+                alt={data.full_name}
+            />
             <div className={cx('info')}>
                 <p className={cx('tiktok-id')}>
                     <span>{data.nickname}</span>

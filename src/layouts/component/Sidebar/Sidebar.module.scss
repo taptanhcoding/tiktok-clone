@@ -5,78 +5,12 @@
     top: var(--default-layout-header-height);
     flex-direction: column;
     overflow-y: overlay;
+    z-index: 10;
 }
 
 .wrapper,
 .user-box {
     width: var(--default-sidebar-width);
-}
-
-.user-box {
-    padding-right: 32px;
-    margin-top: -16px;
-}
-//css box HeadlessTippy
-.user-box_wrapper {
-    padding: 20px;
-}
-//Css img
-.user-img {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-}
-
-.user-avatar {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-//Css name
-.tiktok-id,
-.name {
-    font-family: SofiaPro;
-}
-
-.tiktok-id {
-    font-size: 1.6rem;
-}
-
-.name {
-    font-size: 1em;
-}
-.tiktok-active {
-    color: rgb(32, 213, 236);
-    margin-left: 4px;
-    font-size: 1.2rem;
-}
-
-//Css follow like
-.user-inter {
-    font-size: 1.7rem;
-}
-
-.wp-data + .wp-data {
-    margin-left: 12px;
-}
-
-.data {
-    font-weight: 700;
-    margin-right: 6px;
-}
-
-.sidebar-item {
-    box-shadow: none;
-    border-top: 1px solid rgba(22, 24, 35, 0.12);
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.user-item {
-    padding: 8px;
 }
 
 .user-more {

@@ -12,7 +12,14 @@ import styles from './Menu.module.scss';
 
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
-function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false }) {
+function Menu({
+    children,
+    items = [],
+    onChange = defaultFn,
+    hideOnClick = false,
+    placement = 'bottom-end',
+    positionArrow = 'top',
+}) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
@@ -50,6 +57,7 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
                 )}
 
                 <div className={cx('menu-children')}>{renderItems()}</div>
+                <div className={cx('arrow', positionArrow)} data-popper-arrow></div>
             </PopperWrapper>
         </div>
     );
@@ -59,7 +67,7 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false 
             interactive
             delay={[400, 900]}
             hideOnClick={hideOnClick}
-            placement="bottom-end"
+            placement={placement}
             onHide={handleResetToFirstMenu}
             render={renderResult}
         >

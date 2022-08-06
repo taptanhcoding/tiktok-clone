@@ -24,6 +24,7 @@ import Button from '~/components/Button';
 import Image from '~/components/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import BoxUser from '~/components/BoxUser';
 
 const cx = classNames.bind(styles);
 function Sidebar() {
@@ -67,56 +68,14 @@ function Sidebar() {
             <Wrapper menuTitle="Tài khoản được đề xuất" className={cx('sidebar-item')}>
                 {listUser.map((user) => (
                     <div>
-                        <HeadlessTippy
-                            interactive
-                            delay={[400, 0]}
-                            placement="bottom"
-                            render={(attrs) => (
-                                <div className={cx('user-box')} tabIndex="-1" {...attrs}>
-                                    <Wrapper className={cx('user-box_wrapper')}>
-                                        <div className={cx('user-img')}>
-                                            <Image
-                                                src={user.avatar}
-                                                className={cx('user-avatar')}
-                                            />
-                                            <Button primary>Follow</Button>
-                                        </div>
-                                        <div className={cx('info')}>
-                                            <p className={cx('tiktok-id')}>
-                                                <span>{user.nickname}</span>
-                                                {user.tick && (
-                                                    <FontAwesomeIcon
-                                                        className={cx('tiktok-active')}
-                                                        icon={faCheckCircle}
-                                                    />
-                                                )}
-                                            </p>
-                                            <p className={cx('name')}>{user.full_name}</p>
-                                        </div>
-                                        <div className={cx('user-inter')}>
-                                            <span className={cx('wp-data')}>
-                                                <span className={cx('data')}>
-                                                    {user.followers_count}
-                                                </span>
-                                                Follower
-                                            </span>
-                                            <span className={cx('wp-data')}>
-                                                <span className={cx('data')}>
-                                                    {user.likes_count}
-                                                </span>
-                                                Follower
-                                            </span>
-                                        </div>
-                                    </Wrapper>
-                                </div>
-                            )}
-                        >
+                        <BoxUser user={user}>
                             <AccountItem
                                 key={user.id}
                                 data={user}
                                 className={cx('user-item')}
+                                isLive={true}
                             />
-                        </HeadlessTippy>
+                        </BoxUser>
                     </div>
                 ))}
                 <p
