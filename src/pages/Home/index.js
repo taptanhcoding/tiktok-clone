@@ -53,11 +53,11 @@ const cx = classNames.bind(styles);
 
 function Home() {
     return (
-        <div className={cx('wrapper')}>
+        <>
             {listVideo.map((video) => {
                 return <ItemContainer key={video.id} data={video} />;
             })}
-        </div>
+        </>
     );
 }
 

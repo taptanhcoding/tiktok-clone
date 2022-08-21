@@ -84,9 +84,6 @@
     width: 100%;
 }
 
-.medium {
-}
-
 .small {
     min-height: 28px;
     min-width: 88px;
@@ -95,7 +92,7 @@
 
 // Css for icon
 .icon {
-    width: 18px;
+    width: fit-content;
 }
 
 .icon + .title,

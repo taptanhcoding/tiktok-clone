@@ -6,7 +6,7 @@ import className from 'classnames/bind';
 const cx = className.bind(styles);
 function Wrapper({ children, className, menuTitle }) {
     return (
-        <div className={cx('wrapper', className)}>
+        <div className={cx('wrapper', { [className]: className })}>
             {menuTitle && <h4 className={cx('menu-title')}>{menuTitle}</h4>}
 
             {children}

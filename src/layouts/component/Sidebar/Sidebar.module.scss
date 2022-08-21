@@ -5,12 +5,28 @@
     top: var(--default-layout-header-height);
     flex-direction: column;
     overflow-y: overlay;
-    z-index: 10;
+    z-index: 1;
+    background-color: var(--white);
 }
 
 .wrapper,
 .user-box {
     width: var(--default-sidebar-width);
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    border-radius: 8px;
+    padding-top: 8px;
+    margin-top: -3px;
+    box-sizing: border-box;
+    min-height: 100px;
+    max-height: min((100vh - 96px) - 60px, 734px);
+    overflow: hidden auto;
 }
 
 .user-more {

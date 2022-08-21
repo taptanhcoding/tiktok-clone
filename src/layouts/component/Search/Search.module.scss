@@ -3,6 +3,10 @@
     width: 361px;
 }
 
+.wrapper-search {
+    z-index: 1000;
+}
+
 .search {
     height: var(--search-height);
     background: rgba(22, 24, 35, 0.06);

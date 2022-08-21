@@ -105,7 +105,7 @@ function Header() {
                 <Search />
 
                 <div className={cx('actions')}>
-                    <Button medium leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                    <Button leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                         <span>Tải lên</span>
                     </Button>
                     {curentUser ? (

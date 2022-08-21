@@ -65,12 +65,12 @@ function Sidebar() {
                     activeIcon={<LiveActiveIcon />}
                 />
             </Menu>
+
             <Wrapper menuTitle="Tài khoản được đề xuất" className={cx('sidebar-item')}>
                 {listUser.map((user) => (
-                    <div>
+                    <div key={user.id}>
                         <BoxUser user={user}>
                             <AccountItem
-                                key={user.id}
                                 data={user}
                                 className={cx('user-item')}
                                 isLive={true}

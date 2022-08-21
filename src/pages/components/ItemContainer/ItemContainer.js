@@ -75,90 +75,27 @@ function ItemContainer({ data }) {
     const volumeBox = useRef();
     const nicknameE = useRef();
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            let dist = box.current.getBoundingClientRect().top;
-            if (dist <= 350 && dist > -300) {
-                videoElement.current.play();
-                setPlay(true);
-            } else {
-                videoElement.current.pause();
-                setPlay(false);
-            }
-        });
         videoElement.current.volume = mute;
-        var elem = volumeBox.current,
-            div = volumeControl.current,
-            y = 0,
-            mousedown = false;
-        if (elem && div) {
-            // div event mousedown
-            div.addEventListener(
-                'mousedown',
+        if (volumeBar.current) {
+            volumeBar.current.style = `transform: scaleY(${mute})`;
+            volumeBar.current.addEventListener(
+                'click',
                 function (e) {
                     // mouse state set to true
-                    mousedown = true;
                     // subtract offset
-                    y = div.offsetTop - e.clientY;
-                },
-                true,
-            );
-
-            // div event mouseup
-            div.addEventListener(
-                'mouseup',
-                function (e) {
-                    // mouse state set to false
-                    mousedown = false;
-                },
-                true,
-            );
-
-            elem.addEventListener(
-                'mouseup',
-                function (e) {
-                    // mouse state set to false
-                    mousedown = false;
-                },
-                true,
-            );
-
-            // element mousemove to stop
-            elem.addEventListener(
-                'mousemove',
-                function (e) {
-                    e.preventDefault();
-                    // Is mouse pressed
-                    if (mousedown) {
-                        // Now we calculate the difference upwards ( y + e.clientY in 5 -44 )
-                        let posY =
-                            e.clientY + y >= 48
-                                ? 48
-                                : e.clientY + y <= 0
-                                ? 0
-                                : e.clientY + y;
-                        let top = posY == 0 ? 6 : posY;
-                        div.style.top = top + 'px';
-                        let score = posY / 48;
-                        volumeBar.current.style.transform = `scaleY(${1 - score})`;
-                        setMute(1 - score);
-                        lastMute.current = 1 - score;
-                    }
+                    let y = e.offsetY;
+                    setMute(1 - y / 44);
                 },
                 true,
             );
         }
     }, [mute]);
 
-    const handleVolumeControl = (e) => {
-        var y = e.clientY;
-        let posY = 596 - y >= 48 ? 48 : 590 - y <= 0 ? 0 : 590 - y;
-        let bottom = posY == 0 ? 8 : posY;
-        volumeControl.current.style.top = 'unset';
-        volumeControl.current.style.bottom = bottom + 'px';
-        let score = posY / 48;
-        volumeBar.current.style.transform = `scaleY(${score})`;
-        setMute(score);
-        lastMute.current = score;
+    const handleVolume = (e) => {
+        let value = e.target.value;
+        setMute(value / 50);
+        volumeBar.current.style = `transform: scaleY(${value / 50})`;
+        lastMute.current = value / 50;
     };
 
     const handleHover = () => {
@@ -168,6 +105,7 @@ function ItemContainer({ data }) {
     const handleLeave = () => {
         nicknameE.current.style = 'text-decoration: none';
     };
+
     return (
         <div className={cx('wrapper')} ref={box}>
             <BoxUser user={data} placement="bottom-start">
@@ -208,12 +146,12 @@ function ItemContainer({ data }) {
                     </div>
                 </div>
                 <div className={cx('media')}>
-                    <div class={cx('media-content')}>
+                    <div className={cx('media-content')}>
                         <div className={cx('video')}>
                             <video
                                 ref={videoElement}
                                 className={cx('video-tag')}
-                                src={data.video.video4}
+                                src={data.video.video3}
                                 loop
                             />
                         </div>
@@ -247,55 +185,59 @@ function ItemContainer({ data }) {
                                 </div>
                             )}
                         </div>
-                        <HeadLessTippy
-                            interactive
-                            placement="top"
-                            render={(attrs) => (
-                                <div
-                                    className={cx('volume-box')}
-                                    tabIndex="-1"
-                                    {...attrs}
-                                >
-                                    <div className={cx('volume-change')} ref={volumeBox}>
+                        <div>
+                            <HeadLessTippy
+                                interactive
+                                placement="top"
+                                render={(attrs) => (
+                                    <div
+                                        className={cx('volume-box')}
+                                        tabIndex="-1"
+                                        {...attrs}
+                                    >
                                         <div
-                                            className={cx('volume-control')}
-                                            onMouseDown={handleVolumeControl}
-                                        ></div>
-                                        <div
-                                            ref={volumeControl}
-                                            className={cx('volume-circle')}
-                                        ></div>
-                                        <div
-                                            ref={volumeBar}
-                                            className={cx('volume-bar')}
-                                            onMouseDown={handleVolumeControl}
-                                        ></div>
+                                            className={cx('volume-change')}
+                                            ref={volumeBox}
+                                        >
+                                            <input
+                                                type="range"
+                                                className={cx('volume-input')}
+                                                min="0"
+                                                max="50"
+                                                value={mute * 50}
+                                                onChange={handleVolume}
+                                            />
+                                            <div
+                                                ref={volumeBar}
+                                                className={cx('volume-bar')}
+                                            ></div>
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                        >
-                            <div className={cx('volume')}>
-                                {!!mute ? (
-                                    <button
-                                        className={cx('volume-icon')}
-                                        onClick={() => {
-                                            setMute(0);
-                                        }}
-                                    >
-                                        <VolumeIcon />
-                                    </button>
-                                ) : (
-                                    <button
-                                        className={cx('volume-icon')}
-                                        onClick={() => {
-                                            setMute(lastMute.current || 1);
-                                        }}
-                                    >
-                                        <MuteIcon />
-                                    </button>
                                 )}
-                            </div>
-                        </HeadLessTippy>
+                            >
+                                <div className={cx('volume')}>
+                                    {!!mute ? (
+                                        <button
+                                            className={cx('volume-icon')}
+                                            onClick={() => {
+                                                setMute(0);
+                                            }}
+                                        >
+                                            <VolumeIcon />
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className={cx('volume-icon')}
+                                            onClick={() => {
+                                                setMute(lastMute.current || 1);
+                                            }}
+                                        >
+                                            <MuteIcon />
+                                        </button>
+                                    )}
+                                </div>
+                            </HeadLessTippy>
+                        </div>
                     </div>
                     <div className={cx('media-actions')}>
                         <button
